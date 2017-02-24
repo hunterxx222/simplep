@@ -1,33 +1,39 @@
 
 // Bootstrap Sidebar
 .nav-side-menu {
-  margin-left: -315px;
   overflow: auto;
   font-family: verdana;
   font-size: 12px;
   font-weight: 200;
-  background-color: #2e353d;
-  position: fixed;
+  position: absolute;
   top: 0px;
-  width: 300px;
   height: 100%;
   color: #e1ffff;
-  opacity: 0.6;
+  opacity: 0.3;
   transition: all 0.4s ease;
+  z-index: 1;
+  white-space: nowrap;
+  width: 130px;
+  text-overflow: ellipsis;;
 }
 
 .nav-side-menu:hover {
+  background-color: #2e353d;
+  .brand {
+    background-color: #23282e;
+  }
   opacity: 0.8;
   transition: all 0.4s ease;
+  width: 250px;
 }
 
 .nav-side-menu .brand {
-  background-color: #23282e;
   line-height: 50px;
   display: block;
-  text-align: center;
+  // text-align: center;
   font-size: 14px;
 }
+
 .nav-side-menu .toggle-btn {
   display: none;
 }
@@ -159,6 +165,7 @@
 body {
   margin: 0px;
   padding: 0px;
+  overflow: hidden;
 }
 
 // End Bootstrap Sidebar
@@ -167,8 +174,9 @@ body {
 .dashboardGreeting{
   background-color: rgba(0,0,0,0.2);
   position: absolute;
-  bottom:10px;
+  bottom:50px;
   color: #ffffff;
+  left: 20%;
 
 // NOTE: remove the border and border radius soon
   border-radius: 12px;

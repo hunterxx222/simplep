@@ -5,10 +5,9 @@
 **SimpleP** is an intuitive Project Management written in Ruby on Rails designed to drastically improve project without the needs of sophisticated softwares.
 
 Each member signing up can create a team. A team can create projects, and projects contain tasks. In each tasks, users will assign owner, add followers, notes, comments, attachments and tags. In addition, when the state of a project or tasks changes, followers and owners get updates about the changes in their Dashboard.
+.
 
-## Group Infomation
-
-- Group Name: 1000 Dollars Project Team.
+Owner name: Toan Ngo
 - Contributes:
     + @hunterxx222
     + @se7oluti0n
@@ -66,13 +65,11 @@ Each member signing up can create a team. A team can create projects, and projec
 * [ ] User can see a calendar of tasks due date.
 
 ## Projects Wireframe
-![Wireframe](docs/wireframe/wireframe.png)
 
 ## Models ER Diagram
-![ER Diagrams](docs/models/simplep.png)
 ## License
 
-    Copyright [2016] [1000 Dollars Project Team]
+    Copyright [2017] [Toan Ngo]
 
     Licensed under the Apache License, Version 2.0 (the "License");
     you may not use this file except in compliance with the License.
