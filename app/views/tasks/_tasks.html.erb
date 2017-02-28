@@ -1,45 +1,40 @@
-<div class="row">
-    <div class="col-xs-12">
-        <div class="card">
             <div class="card-block table-responsive">
                 <table class="table table-hover">
                     <tr>
-                        <th>ID</th>
-                        <th>User</th>
+                        <th>Owner</th>
+                        <th>Name</th>
                         <th>Date</th>
-                        <th>Status</th>
-                        <th>Reason</th>
                     </tr>
-                    <tr>
-                        <td>183</td>
-                        <td>John Doe</td>
-                        <td>11-7-2014</td>
-                        <td><span class="label label-success">Approved</span></td>
-                        <td>Bacon ipsum dolor sit amet salami venison chicken flank fatback doner.</td>
-                    </tr>
-                    <tr>
-                        <td>219</td>
-                        <td>Jane Doe</td>
-                        <td>11-7-2014</td>
-                        <td><span class="label label-warning">Pending</span></td>
-                        <td>Bacon ipsum dolor sit amet salami venison chicken flank fatback doner.</td>
-                    </tr>
-                    <tr>
-                        <td>657</td>
-                        <td>Bob Doe</td>
-                        <td>11-7-2014</td>
-                        <td><span class="label label-primary">Approved</span></td>
-                        <td>Bacon ipsum dolor sit amet salami venison chicken flank fatback doner.</td>
-                    </tr>
-                    <tr>
-                        <td>175</td>
-                        <td>Mike Doe</td>
-                        <td>11-7-2014</td>
-                        <td><span class="label label-danger">Denied</span></td>
-                        <td>Bacon ipsum dolor sit amet salami venison chicken flank fatback doner.</td>
-                    </tr>
+                    <% tasks.each do |task| %>
+                      <%# Check if task is header task then mark it specially  %>
+                      <% if task.name.last == ":" %>
+                        <tr style="border-bottom:0.5px solid #d7dde4;">
+                          <td colspan="3">
+                            <h5><strong><%= link_to task.name, project_task_path(task.project, task), remote:true, class: 'header-task'%></strong></h5>
+                          </td>
+                        </tr>
+                      <% else %>
+                      <tr>
+                        <td>
+                        <%# if task has owner then show the avatar %>
+                          <% if task.owner %>
+                            <%= image_tag(task.owner.avatar, class: "round-image-16") %>
+                          <% end %>
+                        </td>
+                        <td>
+                        <%# if task is completed then strikethrough it  %>
+                          <% if task.isCompleted? %>
+                            <s><%= link_to task.name, project_task_path(task.project, task), remote:true%></s>
+                          <% else %>
+                            <%= link_to task.name, project_task_path(task.project, task), remote:true%>
+                          <% end %>
+                        </td>
+                        <td>
+                          <%= deadline_warning(task) %>
+                        </td>
+                      </tr>
+                      <% end %>
+                    <% end %>
+
                 </table>
             </div><!-- /.box-body -->
-        </div><!-- /.box -->
-    </div>
-</div>

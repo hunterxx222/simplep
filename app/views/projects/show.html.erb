@@ -1,5 +1,5 @@
-  <div class="col-sm-10 offset-sm-1">
-    <div class="card sameheight-item items col-sm-12">
+  <div class="col-sm-10 offset-sm-1" style="height:95%;top:2.5%">
+    <div class="card sameheight-item items col-sm-12" style="height: 100%;">
       <div class="card-header bordered">
         <h3><strong> <%= @project.name %> &nbsp;</strong></h3>
           <%= link_to "Blog", project_blogs_path(@project), class: "btn btn-warning btn-sm rounded-s" %>
@@ -17,7 +17,7 @@
           </div>
       </div>
       <div class="row placeholders">
-        <div class="center-container col-md-6" id=<%= @project.id %> >
+        <div class="center-container col-sm-6" style="overflow: auto;" id=<%= @project.id %> >
           <%= render partial: "tasks/tasks", locals: {tasks: @tasks} %>
 
           <%#= link_to 'New Task', new_project_task_path(@project), remote: true, data: { toggle: "modal", target: "#ajax-modal-project" },class: 'btn btn-primary btn-sm rounded-s'%>
