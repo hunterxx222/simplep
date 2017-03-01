@@ -65,7 +65,7 @@ module ApplicationHelper
       content_tag(:div, "<i class='fa fa-lg fa-circle-o' aria-hidden='true'></i>".html_safe)
     end
   end
-  
+# Set custom format for deadline_warning
   def custom_format(date)
     if date == Date.today
       "Today"
@@ -76,7 +76,7 @@ module ApplicationHelper
     elsif (date > Date.today - 7) && (date < Date.yesterday)
       date.strftime("%A")
     else
-      date.strftime("%B %-d")
+      date.strftime("%b %-d")
     end
   end
 

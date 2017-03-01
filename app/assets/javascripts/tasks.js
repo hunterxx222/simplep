@@ -12,6 +12,8 @@
 //     helper: fixHelperModified,
 //     stop: function (event, ui) { renumber_table('#taks_list') }
 //   }).disableSelection();
+
+// Set Positions for Tasks
   var ready, set_positions;
 
   set_positions = function() {

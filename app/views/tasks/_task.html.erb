@@ -1,48 +1,53 @@
-<h4><strong><%= task.name %></strong>  <div class="btn-group pull-right">
-  <button class="btn btn-secondary btn-sm dropdown-toggle btn-sm rounded-s" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-    <i class="fa fa-ellipsis-h" aria-hidden="true"></i>
-  </button>
-  <div class="dropdown-menu dropdown-menu-right">
-    <%= link_to " Edit", edit_project_task_path(@project, task), class: "dropdown-item btn btn-secondary btn-sm rounded-s"%>
-    <%= link_to " Delete", project_task_path(@project, task), :method => :delete, class: "dropdown-item btn-sm rounded-s"%>
-  </div>
+<h5>
+    <strong><%= task.name %></strong>
+    <div class="btn-group pull-right">
+        <button class="btn btn-secondary btn-sm dropdown-toggle btn-sm rounded-s" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <i class="fa fa-ellipsis-h" aria-hidden="true"></i>
+        </button>
+        <div class="dropdown-menu dropdown-menu-right">
+            <%= link_to " Edit", edit_project_task_path(@project, task), class: "dropdown-item btn btn-secondary btn-sm rounded-s"%>
+            <%= link_to " Delete", project_task_path(@project, task), :method => :delete, class: "dropdown-item btn-sm rounded-s"%>
+        </div>
+    </div>
+</h5>
+<div id="remote">
+    <i class="fa fa-user fa-lg"></i>&nbsp;&nbsp;<input class="typeahead" id="owner_select" size="<%= task.owner.name.length if task.owner %>" type="text" placeholder="Type to find team members" value="<%= task.owner.name if task.owner %>" style="font-size:15px;">
 </div>
-</h4>
-    <div id="remote">
-      <i class="fa fa-user fa-lg"></i>&nbsp;&nbsp;<input class="typeahead form-control underlined" id="owner_select"  size="<%= task.owner.name.length if task.owner %>" type="text" placeholder="Type to find team members" value="<%= task.owner.name if task.owner %>" style="font-size:15px;">
-    </div>
-    <div>
-      <i class="fa fa-calendar fa-lg"></i>&nbsp;<input type="text" class="datepicker tt-hint form-control underlined" size="10"  data-request-url="<%= project_task_deadline_path(task.project, task)%>" onchange="handleDueDateChange(this)" value="<%= task.due_date.to_date.to_s if task.due_date%>" style="font-size:15px; display:inline; color:black; width:14%;">
-    </div>
-  <br>
-    <% if task.description %>
-    <tab><%= markdown(task.description) %></tab>
-    <% end %>
-  <div class="comments-wrapper">
+<div>
+    <!-- <i class="fa fa-calendar fa-lg"></i>&nbsp;<input type="text" class="datepicker tt-hint form-control underlined" size="10"  data-request-url="<%= project_task_deadline_path(task.project, task)%>" onchange="handleDueDateChange(this)" value="<%= task.due_date.to_date.to_s if task.due_date%>" style="font-size:15px; display:inline; color:black; width:14%;"> -->
+
+    <i class="fa fa-calendar fa-lg"></i>&nbsp;<input type="date" class="" size="10" data-request-url="<%= project_task_deadline_path(task.project, task)%>" onchange="handleDueDateChange(this)" value="<%= task.due_date.to_date.to_s if task.due_date%>">
+
+</div>
+<br>
+<% if task.description %>
+<tab><%= markdown(task.description) %></tab>
+<% end %>
+<div class="comments-wrapper">
     <div class="comments">
-      <%= render "tasks/task_comments", comments: task.comments %>
+        <%= render "tasks/task_comments", comments: task.comments %>
     </div>
 
     <%= form_for [task, Comment.new], remote: true do |f| %>
-      <div class="form-group">
-        <%= f.text_field :content, placeholder: "Comment", autocomplete: 'off', rows: 5, class: "form-control underlined" %><br />
-      </div>
+    <div class="form-group">
+        <%= f.text_field :content, placeholder: "Comment", autocomplete: 'off', rows: 5, class: "form-control underlined" %><br/>
+    </div>
     <% end %>
 
     <div class="followers" style="display:inline">
-      <h6>Followers:</h6>
-      <%= render "tasks/followers", task: task %>
+        <h6>Followers:</h6>
+        <%= render "tasks/followers", task: task %>
     </div>
     <% if current_team %>
-      <div id="remote" style="display:inline">
+    <div id="remote" style="display:inline">
         <input class="typeahead form-control underlined" id="follower_select" type="text" size="10" placeholder="Add followers" style="padding:10px; font-size: 15px;">
-      </div>
+    </div>
     <% end %>
-  </div>
+</div>
 <br>
 
 <!-- old "Mark as Completed feature set. Don't need to use this anymore. " -->
-  <!-- <div class="form-check">
+<!-- <div class="form-check">
     <label class="form-check-label">
       <input id="task_completed" data-request-url=<%=project_task_completed_path(task.project, task)%> onchange="handleChange(this);" class="form-check-input" type="checkbox" <%="checked" if task.isCompleted? %>>
       Mark as completed
@@ -50,46 +55,42 @@
   </div> -->
 <script>
 
-var bestPictures = new Bloodhound({
-  datumTokenizer: Bloodhound.tokenizers.obj.whitespace("name"),
-  queryTokenizer: Bloodhound.tokenizers.whitespace,
-  prefetch:
-  {
-    url: '/tasks/user_team.json'
-  }
-});
+    var bestPictures = new Bloodhound({
+        datumTokenizer: Bloodhound.tokenizers.obj.whitespace("name"),
+        queryTokenizer: Bloodhound.tokenizers.whitespace,
+        prefetch: {
+            url: '/tasks/user_team.json'
+        }
+    });
 
-$(".datepicker").datepicker({dateFormat: 'dd-mm-yy'});
+    $(".datepicker").datepicker({dateFormat: 'dd-mm-yy'});
 
+    $('#remote .typeahead').typeahead(null, {
+        name: 'best-pictures',
+        display: 'name',
+        source: bestPictures
+    });
 
-$('#remote .typeahead').typeahead(null, {
-  name: 'best-pictures',
-  display: 'name',
-  source: bestPictures
-});
+    $('#owner_select').bind('typeahead:select', function (ev, suggestion) {
+        console.log('Selection: ' + suggestion.email);
 
-$('#owner_select').bind('typeahead:select', function(ev, suggestion) {
-  console.log('Selection: ' + suggestion.email);
+        url = '<%= project_task_owner_path(task.project, task)%>.js';
+        console.log('Post to url: ' + url);
+        $.post(url, {
+            owner_id: suggestion.id,
+            project_id: <%= task.project.id %>,
+            task_id: <%= task.id %>
+        });
+    });
+    $('#follower_select').bind('typeahead:select', function (ev, suggestion) {
+        console.log('Follower Selection: ' + suggestion.email);
 
-  url = '<%= project_task_owner_path(task.project, task)%>' + '.js';
-  console.log('Post to url: ' + url);
-  $.post(url, {
-    owner_id: suggestion.id,
-    project_id: <%= task.project.id %>,
-    task_id: <%= task.id %>
-}
-);
-  });
-$('#follower_select').bind('typeahead:select', function(ev, suggestion) {
-  console.log('Follower Selection: ' + suggestion.email);
-
-  url = '<%= task_task_followers_path(task, TaskFollower.new)%>' + '.js';
-  console.log('Post to url: ' + url);
-  $.post(url, {
-    user_id: suggestion.id,
-    task_id: <%= task.id %>
-}
-);
-  });
-$('.chosen-select').chosen();
+        url = '<%= task_task_followers_path(task, TaskFollower.new)%>.js';
+        console.log('Post to url: ' + url);
+        $.post(url, {
+            user_id: suggestion.id,
+            task_id: <%= task.id %>
+        });
+    });
+    $('.chosen-select').chosen();
 </script>

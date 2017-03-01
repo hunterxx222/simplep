@@ -23,14 +23,17 @@
 //= require twitter/typeahead.min
 //= require chosen-jquery
 //= require handlebars
-
+//= require_tree .
 // Toastr config
 toastr.options = {
   "closeButton": true,
   "debug": false,
-  "progressBar": true,
-  "positionClass": "toast-bottom-right",
-  "ShowDuration": "300",
+  "newestOnTop": false,
+  "progressBar": false,
+  "positionClass": "toast-top-right",
+  "preventDuplicates": false,
+  "onclick": null,
+  "showDuration": "300",
   "hideDuration": "1000",
   "timeOut": "5000",
   "extendedTimeOut": "1000",
@@ -38,7 +41,7 @@ toastr.options = {
   "hideEasing": "linear",
   "showMethod": "fadeIn",
   "hideMethod": "fadeOut"
-};
+}
 
 //$(document).on('turbolinks:load', function() {
 //      $('.datepicker').datepicker();

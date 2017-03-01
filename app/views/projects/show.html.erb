@@ -25,7 +25,7 @@
           <%#= NOTE: you need label:false in the form below otherwise it won't work %>
 
           <%= form_for([@project, Task.new], remote: true) do |f| %>
-            <%= f.text_field :name, class: 'form-control underlined', placeholder: 'New Task', label: false%>
+            <%= f.text_field :name, class: 'form-control', placeholder: 'New Task', label: false%>
           <% end %>
 
         </div>
