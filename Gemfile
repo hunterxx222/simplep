@@ -79,6 +79,14 @@ group :development do
   gem 'spring-watcher-listen', '~> 2.0.0'
         gem 'guard-rspec', require: false
 end
+# 
+# # Use capistrano for deployment
+#   gem 'capistrano',         require: false
+#   gem 'capistrano-rvm',     require: false
+#   gem 'capistrano-rails',   require: false
+#   gem 'capistrano-bundler', require: false
+#   gem 'capistrano3-puma',   require: false
+# # End capistrano
 
 group :test do
   gem 'capybara', '~> 2.10', '>= 2.10.1'

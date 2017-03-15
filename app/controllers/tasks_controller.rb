@@ -125,7 +125,15 @@ class TasksController < ApplicationController
   end
 
   def update
+      load_project
+      @task = Task.find(params[:id])
 
+      if @task.update(task_params)
+        flash[:success] = "Task updated successfully"
+        redirect_to project_tasks_path(@project)
+      else
+        render 'edit'
+      end
   end
 
   def destroy
