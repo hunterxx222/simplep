@@ -44,6 +44,10 @@ gem 'jbuilder', '~> 2.5'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
+# Use Mina for deployment
+gem 'mina', require: false
+gem 'mina-puma', require: false,  github: 'untitledkingdom/mina-puma'
+
 gem 'record_tag_helper', '~> 1.0'
 gem 'bootstrap', '~> 4.0.0.alpha6'
 source 'https://rails-assets.org' do
@@ -79,7 +83,7 @@ group :development do
   gem 'spring-watcher-listen', '~> 2.0.0'
         gem 'guard-rspec', require: false
 end
-# 
+#
 # # Use capistrano for deployment
 #   gem 'capistrano',         require: false
 #   gem 'capistrano-rvm',     require: false

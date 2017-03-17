@@ -1,7 +1,6 @@
-<div class="col-xl-12">
-  <div class="row sameheight-container">
-    <div class="card sameheight-item items">
-      <div class="card-header bordered">
+<div class="col-sm-10 offset-sm-1" style="height:95%;top:2.5%">
+  <div class="card sameheight-item items col-sm-12" style="height: 100%;">
+    <div class="card-header bordered">
           <% if current_team %>
             <h3><strong><%= current_team.name %> Projects</strong></h3>
           <% end %>
@@ -27,5 +26,4 @@
           </div>
       </div>
     </div>
-  </div>
-</div>
+    <%= render '/projects/dialog'%>
