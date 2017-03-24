@@ -17,9 +17,9 @@
       <%= yield(:sidebar) %>
       <section class="wrapper" id="main">
         <%= yield %>
-      <% else %>
-        <%= yield %>
-      <% end %>
       </section>
+    <% else %>
+      <%= yield %>
+    <% end %>
   </body>
 </html>
