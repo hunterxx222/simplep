@@ -126,13 +126,16 @@ class TasksController < ApplicationController
 
   def update
       load_project
-      @task = Task.find(params[:id])
+      @task = Task.find task_params
 
-      if @task.update(task_params)
-        flash[:success] = "Task updated successfully"
-        redirect_to project_tasks_path(@project)
-      else
-        render 'edit'
+      respond_to do |format|
+        if @task.update(task_params)
+          format.html {redirect_to project_tasks_path(@project),:notice => 'User was successfully updated'}
+          format.json {respond_with_bip(@task)}
+        else
+          format.html {render :action =>'edit'}
+          format.json {respond_with_bip(@task)}
+        end
       end
   end
 

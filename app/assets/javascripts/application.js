@@ -14,6 +14,7 @@
 //= require jquery_ujs
 //= require jquery-ui/widgets/sortable
 //= require jquery-ui/effects/effect-highlight
+//= require best_in_place
 //= require turbolinks
 //= require tether
 //= require bootstrap

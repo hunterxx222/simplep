@@ -14,6 +14,8 @@
 //   }).disableSelection();
 
 // Set Positions for Tasks
+
+
   var ready, set_positions;
 
   set_positions = function() {
@@ -23,6 +25,10 @@
   };
 
   ready = function() {
+
+    /* Activating Best In Place */
+    jQuery(".best_in_place").best_in_place();
+
     set_positions();
 
     $('#tasks_list').sortable();

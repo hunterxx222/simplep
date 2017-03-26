@@ -21,6 +21,8 @@ gem 'sass-rails', '>= 3.2'
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
+# Add inline editing
+gem 'best_in_place'
 
 gem 'jquery-ui-rails'
 
