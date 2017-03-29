@@ -1,26 +1,22 @@
 class BlogsController < ApplicationController
+  before_action :load_project, only [:index,:show,:edit,:new,:create,:update,:destroy]
   def index
-    load_project
     @blog = @project.blogs.order("created_at DESC")
   end
 
   def show
-    load_project
     @blog = Blog.find(params[:id])
   end
 
   def edit
-    load_project
     @blog = Blog.find(params[:id])
   end
 
   def new
-    load_project
     @blog = Blog.new
   end
 
   def create
-    load_project
     @blog = @project.blogs.build blog_params
     @blog.user = current_user
 
@@ -34,7 +30,6 @@ class BlogsController < ApplicationController
   end
 
   def update
-    load_project
     @blog = Blog.find(params[:id])
 
     if @blog.update(blog_params)
@@ -45,7 +40,6 @@ class BlogsController < ApplicationController
   end
 
   def destroy
-    load_project
     @blog = Blog.find(params[:id])
     @blog.destroy
 

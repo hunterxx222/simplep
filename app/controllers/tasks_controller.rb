@@ -125,15 +125,14 @@ class TasksController < ApplicationController
   end
 
   def update
-      load_project
-      @task = Task.find task_params
+      @task = Task.find params[:id]
 
       respond_to do |format|
         if @task.update(task_params)
-          format.html {redirect_to project_tasks_path(@project),:notice => 'User was successfully updated'}
+          format.html {redirect_back fallback_location: project_tasks_path(@project),:notice => 'User was successfully updated'}
           format.json {respond_with_bip(@task)}
         else
-          format.html {render :action =>'edit'}
+          format.html {render 'edit'}
           format.json {respond_with_bip(@task)}
         end
       end

@@ -2,36 +2,36 @@
     <table class="table table-hover">
         <tbody id="tasks_list">
             <% tasks.each do |task| %>
-            <%# Check if task is header task then mark it specially  %>
-            <% if task.name.last == ":" %>
-            <tr class="item item-task" data-id="<%= task.id %>">
-                <td colspan="3">
-                    <h5>
-                        <strong><%= link_to task.name, project_task_path(task.project, task), remote:true, class: 'header-task'%></strong>
-                    </h5>
-                </td>
-            </tr>
-        <% else %>
-            <tr class="item item-task" data-id="<%= task.id %>">
-                <td>
-                    <%# if task has owner then show the avatar %>
-                    <% if task.owner %>
-                    <%= image_tag(task.owner.avatar, class: "round-image-16") %>
-                    <% end %>
-                </td>
-                <td>
-                    <%# if task is completed then strikethrough it  %>
-                    <% if task.isCompleted? %>
-                    <s><%= link_to task.name, project_task_path(task.project, task), remote:true%></s>
-                <% else %>
-                    <%= link_to task.name, project_task_path(task.project, task), remote:true%>
-                    <% end %>
-                </td>
-                <td style="width:77px;">
-                    <%= deadline_warning(task) %>
-                </td>
-            </tr>
-            <% end %>
+              <%# Check if task is header task then mark it specially  %>
+              <% if task.name.last == ":" %>
+                <tr class="item item-task" data-id="<%= task.id %>">
+                    <td colspan="3">
+                        <h5>
+                            <strong><%= link_to task.name, project_task_path(task.project, task), remote:true, class: 'header-task'%></strong>
+                        </h5>
+                    </td>
+                </tr>
+              <% else %>
+              <tr class="item item-task" data-id="<%= task.id %>">
+                  <td style="width:58px">
+                      <%# if task has owner then show the avatar %>
+                      <% if task.owner %>
+                        <%= image_tag(task.owner.avatar, class: "round-image-16") %>
+                      <% end %>
+                  </td>
+                  <td>
+                      <%# if task is completed then strikethrough it  %>
+                      <% if task.isCompleted? %>
+                        <s><%= link_to task.name, project_task_path(task.project, task), remote:true%></s>
+                      <% else %>
+                        <%= link_to task.name, project_task_path(task.project, task), remote:true%>
+                      <% end %>
+                  </td>
+                  <td style="width:77px;">
+                      <%= deadline_warning(task) %>
+                  </td>
+              </tr>
+              <% end %>
             <% end %>
         </tbody>
     </table>

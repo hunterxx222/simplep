@@ -1,5 +1,5 @@
 <h5>
-    <strong><%= best_in_place task,:name %></strong>
+    <strong><%= best_in_place task,:name, :as => :input %></strong>
     <div class="btn-group pull-right">
         <button class="btn btn-secondary btn-sm dropdown-toggle btn-sm rounded-s" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             <i class="fa fa-ellipsis-h" aria-hidden="true"></i>
@@ -20,8 +20,9 @@
 
 </div>
 <br>
+<%= best_in_place task, :description %>
 <% if task.description %>
-<tab><%= markdown(task.description) %></tab>
+  <tab><%= markdown(task.description) %></tab>
 <% end %>
 <div class="comments-wrapper">
     <div class="comments">

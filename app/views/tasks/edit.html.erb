@@ -1,5 +1,6 @@
 <%= form_for [@project,@task] do |f| %>
   <div class="col-sm-6 offset-sm-3">
+    <%= f.text_field :name %>
     <%= render 'task',task: @task %>
     <%= f.submit %>
   </div>
