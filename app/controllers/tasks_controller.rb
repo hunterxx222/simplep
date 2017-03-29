@@ -1,5 +1,6 @@
 class TasksController < ApplicationController
-  before_action :load_project, only: [:edit, :create, :show, :completed, :update, :destroy]
+  before_action :load_project, only: [:edit, :create, :show, :completed, :destroy]
+  before_action :load_task, only: [:edit,:show,:completed,:update,:destroy ]
   def new
     @project = Project.find(params[:project_id])
     @task = Task.new
@@ -14,7 +15,6 @@ class TasksController < ApplicationController
   end
 
   def edit
-    @task = Task.find(params[:id])
   end
 
   def index
@@ -58,7 +58,6 @@ class TasksController < ApplicationController
 
   end
   def show
-    @task = Task.find params[:id]
 
     respond_to do |format|
 
@@ -72,7 +71,6 @@ class TasksController < ApplicationController
   end
 
   def completed
-    @task = Task.find params[:id]
     if params[:completed] == "true"
       @task.completed_at = Time.zone.now
       @task.save
@@ -125,7 +123,6 @@ class TasksController < ApplicationController
   end
 
   def update
-      @task = Task.find params[:id]
 
       respond_to do |format|
         if @task.update(task_params)
@@ -139,11 +136,14 @@ class TasksController < ApplicationController
   end
 
   def destroy
-    @task = Task.find params[:id]
     @task.destroy
     redirect_back fallback_location: project_path(@project)
   end
   private
+
+  def load_task
+    @task = Task.find params[:id]
+  end
   def task_params
     params.require(:task).permit(:task_id, :name, :description, :position)
   end

@@ -1,5 +1,5 @@
 class BlogsController < ApplicationController
-  before_action :load_project, only [:index,:show,:edit,:new,:create,:update,:destroy]
+  before_action :load_project, only: [:index,:show,:edit,:new,:create,:update,:destroy]
   def index
     @blog = @project.blogs.order("created_at DESC")
   end
