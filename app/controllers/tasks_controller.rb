@@ -1,8 +1,7 @@
 class TasksController < ApplicationController
-  before_action :load_project, only: [:edit, :create, :show, :completed, :destroy]
+  before_action :load_project, only: [:new, :edit, :create, :show, :completed, :destroy]
   before_action :load_task, only: [:edit,:show,:completed,:update,:destroy ]
   def new
-    @project = Project.find(params[:project_id])
     @task = Task.new
   end
 
@@ -123,10 +122,9 @@ class TasksController < ApplicationController
   end
 
   def update
-
       respond_to do |format|
         if @task.update(task_params)
-          format.html {redirect_back fallback_location: project_tasks_path(@project),:notice => 'User was successfully updated'}
+          format.html {redirect_back fallback_location: project_tasks_path(@project),:notice => 'Task was successfully updated'}
           format.json {respond_with_bip(@task)}
         else
           format.html {render 'edit'}
