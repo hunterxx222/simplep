@@ -19,11 +19,13 @@
     <i class="fa fa-calendar fa-lg"></i>&nbsp;<input type="date" class="" size="10" data-request-url="<%= project_task_deadline_path(task.project, task)%>" onchange="handleDueDateChange(this)" value="<%= task.due_date.to_date.to_s if task.due_date%>">
 
 </div>
-<br>
-<%= best_in_place task, :description, :as => :textarea, :place_holder => "Click me to add content!"%>
-<% if task.description %>
-  <tab><%= markdown(task.description) %></tab>
-<% end %>
+<br />
+
+<%= best_in_place task, :description, :as => :textarea, :place_holder => "<i>Add description</i>"%>
+
+<%# if task.description %>
+  <%#<tab><%= markdown(task.description) %></tab>
+<%# end %>
 <div class="comments-wrapper">
     <div class="comments">
         <%= render "tasks/task_comments", comments: task.comments %>
@@ -31,7 +33,8 @@
 
     <%= form_for [task, Comment.new], remote: true do |f| %>
     <div class="form-group">
-        <%= f.text_field :content, placeholder: "Comment", autocomplete: 'off', rows: 5, class: "form-control underlined" %><br/>
+        <%= f.text_area :content, placeholder: "Comment", autocomplete: 'off', rows: 2, class: "form-control underlined" %><br/>
+        <%= f.submit "Comment", :class => "btn btn-primary" %>
     </div>
     <% end %>
 

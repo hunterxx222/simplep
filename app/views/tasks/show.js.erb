@@ -1,1 +1,3 @@
 $(".right-container").html("<%= j render @task %>")
+<%# Reinitialize the best_in_place script so the content will be editable after ajax loading. This seems to be the problem with AJAX %>
+$(".best_in_place").best_in_place();
