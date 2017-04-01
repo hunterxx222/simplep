@@ -1,5 +1,5 @@
 <h5>
-    <strong><%= best_in_place task,:name, :as => :input %></strong>
+    <strong><%= best_in_place task,:name, :as => :textarea %></strong>
     <div class="btn-group pull-right">
         <button class="btn btn-secondary btn-sm dropdown-toggle btn-sm rounded-s" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             <i class="fa fa-ellipsis-h" aria-hidden="true"></i>
@@ -33,7 +33,7 @@
 
     <%= form_for [task, Comment.new], remote: true do |f| %>
     <div class="form-group">
-        <%= f.text_area :content, placeholder: "Comment", autocomplete: 'off', rows: 2, class: "form-control underlined" %><br/>
+        <%= f.text_area :content, placeholder: "Comment", autocomplete: 'off', class: "form-control underlined" %><br/>
         <%= f.submit "Comment", :class => "btn btn-primary" %>
     </div>
     <% end %>
