@@ -18,7 +18,8 @@
                   <td style="width:58px">
                       <%# if task has owner then show the avatar %>
                       <% if task.owner %>
-                        <%= image_tag(task.owner.avatar, class: "round-image-16") %>
+                        <span class="round-image-40" style="background-color:#014c8c; color:white; padding:5px"><%= task.owner.name[0,2].upcase %></span>
+                        <%#= image_tag(task.owner.avatar, class: "round-image-16") %>
                       <% end %>
                   </td>
                   <td>
