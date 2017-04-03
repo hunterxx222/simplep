@@ -37,7 +37,7 @@
                   <%# add links to project name. TODO: add active state to links that are clicked %>
                   <% if current_team %>
                     <% current_team.projects.each do |project| %>
-                      <li><%= link_to project.name, team_project_path(current_team,project)%></li>
+                      <li><%= link_to project.name, team_project_path(current_team,project,:completed => "0")%></li>
                     <% end %>
                   <% end %>
                 </ul>

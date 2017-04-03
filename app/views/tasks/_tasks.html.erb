@@ -5,9 +5,7 @@
               <% if task.name.last == ":" %>
                 <tr class="item item-task" data-id="<%= task.id %>">
                     <td colspan="4">
-                        <h5>
-                            <strong><%= link_to task.name, project_task_path(task.project, task), remote:true, class: 'header-task'%></strong>
-                        </h5>
+                            <span style="border-bottom:1px solid grey"><strong><%= link_to task.name, project_task_path(task.project, task), remote:true, class: 'header-task'%></strong></span>
                     </td>
                 </tr>
               <% else %>
