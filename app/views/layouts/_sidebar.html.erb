@@ -1,24 +1,5 @@
 <!-- Bootstrap Sidebar -->
 <section class="nav-side-menu">
-      <div class="dropdown">
-        <img src="/assets/logo.png" style="height:40px">
-        <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          <%= current_user.name %>
-        </button>
-        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-          <%= link_to edit_user_registration_path(current_user), class: 'dropdown-item' do %>
-            <i class="fa fa-user"></i> Profile
-          <% end %>
-          <div class="dropdown-divider"></div>
-          <% current_user.my_team.each do |team| %>
-            <%= link_to team.name, switch_path(:team_id => team.id), class: "dropdown-item" %>
-          <% end %>
-          <div class="dropdown-divider"></div>
-          <%= link_to destroy_user_session_path, :method=>'delete', :class => 'dropdown-item' do %>
-            <i class="fa fa-power-off"></i> Log out
-          <% end %>
-        </div>
-      </div>
 
     <i class="fa fa-bars fa-2x toggle-btn" data-toggle="collapse" data-target="#menu-content"></i>
 
@@ -69,8 +50,6 @@
                   <i class="fa fa-users fa-lg"></i> Users
                   </a>
                 </li>
-                <!-- TODO: refactor this to CSS -->
-              <%#= <li style="position:absolute;bottom:0;left: 0px;right: 0px;"> <i class="fa fa-rocket fa-lg"></i><%= link_to " New Project", new_project_path, :remote => true %><%#</li> %>
             </ul>
      </div>
 </section>

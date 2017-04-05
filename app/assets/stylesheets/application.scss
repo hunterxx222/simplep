@@ -3,8 +3,9 @@
 @import "bootstrap";
 @import "font-awesome";
 @import "toastr";
+@import "tasks";
 
-@import url('https://fonts.googleapis.com/css?family=Montserrat');
+@import url('https://fonts.googleapis.com/css?family=Montserrat:500');
 @import url('https://fonts.googleapis.com/css?family=Open+Sans');
 
 html, body{
@@ -24,6 +25,14 @@ body {
   height: 100%;
   width: 100%;
 
+}
+
+// Navbar
+
+.right-navbar-menu {
+  position: absolute;
+  right: 5px;
+  z-index: 99;
 }
 // Avatar
 

@@ -5,7 +5,12 @@
               <% if task.name.last == ":" %>
                 <tr class="item item-task" data-id="<%= task.id %>">
                     <td colspan="4">
-                            <span style="border-bottom:1px solid grey"><strong><%= link_to task.name, project_task_path(task.project, task), remote:true, class: 'header-task'%></strong></span>
+                            <span style="border-bottom:1px solid grey"><strong>
+                              <%= link_to project_task_path(task.project, task), remote:true do %>
+                                <strong><%= best_in_place task, :name, :inner_class => 'header-task' %></strong>
+                              <% end %>
+                            </strong>
+                            </span>
                     </td>
                 </tr>
               <% else %>

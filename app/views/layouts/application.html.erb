@@ -9,17 +9,26 @@
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
   <body>
-    <% if current_user %>
+    <%# If not current user then show the homepage %>
+    <% if !current_user %>
+      <%= yield %>
+    <% else %>
+
       <%= flash_toastr %>
       <% content_for :sidebar do %>
         <%= render 'layouts/sidebar' %>
       <% end %>
+
+      <% content_for :navbar do %>
+        <%= render 'layouts/navbar' %>
+      <% end %>
+
       <%= yield(:sidebar) %>
+      <%= yield(:navbar) %>
       <section class="wrapper" id="main">
         <%= yield %>
       </section>
-    <% else %>
-      <%= yield %>
+
     <% end %>
   </body>
 </html>
