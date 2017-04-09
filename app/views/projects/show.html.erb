@@ -17,7 +17,7 @@
           </div>
       </div>
       <div class="row placeholders">
-        <div class="center-container col-sm-6" style="overflow: auto;" id=<%= @project.id %> >
+        <div class="center-container col-sm-6" style="overflow: auto; padding-top: 10px;" id="<%= @project.id %>" >
           <%= render partial: "tasks/tasks", locals: {tasks: @tasks} %>
 
           <%#= link_to 'New Task', new_project_task_path(@project), remote: true, data: { toggle: "modal", target: "#ajax-modal-project" },class: 'btn btn-primary btn-sm rounded-s'%>
@@ -29,7 +29,7 @@
           <% end %>
 
         </div>
-        <div class="right-container col-sm-6">
+        <div class="right-container col-sm-6" style="padding-top:10px;">
           <% if flash[:task]%>
             <%= render Task.find(flash[:task])%>
           <% end %>

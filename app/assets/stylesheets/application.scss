@@ -4,7 +4,6 @@
 @import "font-awesome";
 @import "toastr";
 @import "tasks";
-
 @import url('https://fonts.googleapis.com/css?family=Montserrat:500');
 @import url('https://fonts.googleapis.com/css?family=Open+Sans');
 
@@ -27,10 +26,17 @@ body {
 
 }
 
+.padding-1point5em {
+  padding: 1.5em;
+}
+
 // Editing bootstrap content
   .table th, .table td {
     padding: 0.5em;
   }
+// End editing bootstrap content
+
+
 // Navbar
 
 .right-navbar-menu {
@@ -146,3 +152,14 @@ body {
   margin: 0;
 }
 // End Twitter typeahead
+
+// notifications
+
+.notifications-container
+{
+  overflow-y: scroll;
+  width: 400px;
+  height: 500px;
+}
+
+// end notifications
