@@ -4,7 +4,7 @@
             <button class="btn btn-primary btn-sm dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 <%= current_user.name %>
             </button>
-            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
                 <%= link_to edit_user_registration_path(current_user), class: 'dropdown-item' do %>
                 <i class="fa fa-user"></i>
                 Profile
@@ -25,7 +25,7 @@
         <a href="/notifications/set_notifications.js" data-method='POST' data-remote="true" data-toggle="dropdown">
             <i class="fa fa-bell-o"></i>
             <sup>
-                <span class="counter"><%= new_feeds_icon(notification_count) %></span>
+                <span class="counter"><%= new_feeds_icon(notification_count)%></span>
             </sup>
         </a>
         <div class="dropdown-menu dropdown-menu-right animated flipInX">

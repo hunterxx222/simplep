@@ -85,6 +85,10 @@ group :development do
   gem 'spring-watcher-listen', '~> 2.0.0'
         gem 'guard-rspec', require: false
 end
+
+# Kaminari gem for pagination
+gem 'kaminari'
+
 #
 # # Use capistrano for deployment
 #   gem 'capistrano',         require: false

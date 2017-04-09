@@ -5,7 +5,7 @@ class NotificationsController < ApplicationController
       # reload user data
       user = User.find current_user.id
       # TODO: USE KAMINARI TO PAGINATE NOTIFICATION PAGE
-      @notifications = user.notifications.limit(20).order("updated_at DESC")
+      @notifications = user.notifications.order("updated_at DESC").page(params[:page])
 
       new_feeds = user.notification_readers.select {|feed| !feed.isRead?}
       new_feeds.each do |feed|

@@ -18,7 +18,7 @@ class ApplicationController < ActionController::Base
   def load_notifications
       # reload user data
       user = User.find current_user.id
-      @notifications = user.notifications.order("updated_at DESC")
+      @notifications = user.notifications.order("updated_at DESC").page params[:page]
 
       new_feeds = user.notification_readers.select {|feed| !feed.isRead?}
       new_feeds.each do |feed|
