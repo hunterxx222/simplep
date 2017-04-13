@@ -126,9 +126,11 @@
     margin-top: 5px;
   }
 </style>
-<div class="container">
+<div class="col-sm-10 offset-sm-1" style="height:95%;top:2.5%">
+  <div class="card sameheight-item items col-sm-12" style="height: 100%;">
+    <div class="card-block">
   <%= link_to "New Blog", new_project_blog_path(@project), class: "btn btn-primary btn-sm rounded-s" %>
-    <ul class="timeline">
+      <ul class="timeline">
       <% @blog.each do |b|%>
         <li>
           <div class="timeline-badge <%= "danger" if b.status == "Late" %>"><i class="<%= statusIcon(b.status)%>"></i></div>
@@ -145,4 +147,6 @@
         <% end %>
     </ul>
     <%= link_to "Back to Project", project_path(@project), class: "btn btn-primary btn-sm rounded-s" %>
+  </div>
+</div>
 </div>

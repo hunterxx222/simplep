@@ -14,7 +14,7 @@ html, body{
   min-width: 100%;
 }
 body {
-  background: url("http://hunterxx.com/resources/images/btv0k50c_4m-siamak-djamei.jpg") no-repeat;
+  background: url("http://hunterxx.com/resources/images/yosemite.jpg") no-repeat;
   background-size: cover;
   font-family: 'Open Sans';
   font-size: 14px;
@@ -158,7 +158,8 @@ body {
 .notifications-container
 {
   overflow-y: scroll;
-  width: 400px;
+  overflow-x: hidden;
+  width: 450px;
   height: 500px;
 }
 

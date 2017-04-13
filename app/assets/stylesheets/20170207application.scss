@@ -80,7 +80,8 @@
 .notifications-container
 {
   overflow-y: scroll;
-  width: 400px;
+  overflow-x: hidden;
+  width: 450px;
   height: 500px;
 }
 

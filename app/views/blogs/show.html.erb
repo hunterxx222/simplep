@@ -1,7 +1,7 @@
-  <div class="row">
-    <div class="col-sm-6">
-      <div class="card card-block">
-        <h3 class="card-title"><%= @blog.title %></h3>
+<div class="col-sm-10 offset-sm-1" style="height:95%;top:2.5%">
+  <div class="card sameheight-item items col-sm-12" style="height: 100%;">
+      <div class="card-block">
+        <h3 class="card-header"><%= @blog.title %></h3>
         <p class="card-text"><b>Status: </b> <%= @blog.status %></p>
         <p class="card-text"><%= @blog.content %></p>
         <a href="<%= project_blogs_path(@project) %>" class="btn btn-primary">Back</a>
