@@ -2,40 +2,7 @@
         <tbody id="tasks_list">
             <% tasks.each do |task| %>
               <%# Check if task is header task then mark it specially  %>
-              <% if task.name.last == ":" %>
-                <tr class="item item-task" data-id="<%= task.id %>">
-                    <td colspan="4">
-                            <span>
-                              <%= link_to task.name, project_task_path(task.project, task), remote:true, class: 'header-task' %>
-                            </span>
-                    </td>
-                </tr>
-              <% else %>
-              <%# TODO: add class to TD and avoid using inline styling %>
-              <tr class="item item-task" data-id="<%= task.id %>">
-                  <td style="width:36px">
-                    <input id="task_completed" class="btn btn-primary" data-request-url=<%=project_task_completed_path(task.project, task)%> onchange="handleChange(this);" class="form-check-input" type="checkbox" <%="checked" if task.isCompleted? %>>
-                  </td>
-                  <td style="width:36px">
-                      <%# if task has owner then show the avatar %>
-                      <% if task.owner %>
-                        <span class="round-image-40" style="background-color:#014c8c; color:white; padding:5px"><%= task.owner.name[0,2].upcase %></span>
-                        <%#= image_tag(task.owner.avatar, class: "round-image-16") %>
-                      <% end %>
-                  </td>
-                  <td style="max-width:300px;overflow:hidden;white-space:nowrap">
-                      <%# if task is completed then strikethrough it  %>
-                      <% if task.isCompleted? %>
-                        <s><%= link_to task.name, project_task_path(task.project, task), remote:true%></s>
-                      <% else %>
-                        <%= link_to task.name, project_task_path(task.project, task), remote:true%>
-                      <% end %>
-                  </td>
-                  <td style="width:77px;">
-                      <%= deadline_warning(task) %>
-                  </td>
-              </tr>
-              <% end %>
+              <%= render partial: 'tasks/task_item', locals: {task:task} %>
             <% end %>
         </tbody>
     </table>

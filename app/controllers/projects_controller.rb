@@ -33,11 +33,11 @@ class ProjectsController < ApplicationController
   def show
     # NOTE: define params to show completed/not completed tasks
     if params[:completed] == "0"
-      @tasks = @project.tasks.where("completed_at IS NULL").order('position desc')
+      @tasks = @project.tasks.where("completed_at IS NULL").order('position desc, created_at')
     elsif params[:completed] == "1"
-      @tasks = @project.tasks.where("completed_at IS NOT NULL").order('position desc')
+      @tasks = @project.tasks.where("completed_at IS NOT NULL").order('position desc, created_at')
     else
-      @tasks = @project.tasks.order('position desc')
+      @tasks = @project.tasks.order('position desc, created_at')
     end
   end
 

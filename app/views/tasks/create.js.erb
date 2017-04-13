@@ -1,4 +1,8 @@
-// $('#dialog').modal('toggle');
+<% if false %>
+$('#dialog').modal('toggle');
+$(".center-contaniner").html('<%= j render partial: "tasks/tasks", locals: {task: @task} %>')
+$('<%= j render partial: "tasks/task_item", locals: {task: @task} %>').insertAfter('#tasks_list');
+<% end %>
 
-$('<%= j render partial: "tasks/task_item", locals: {task: @task} %>').insertAfter('.item-list-header');
+$("#tasks_list").append("<%= j render partial: 'tasks/task_item', locals: {task: @task} %>")
 $(".right-container").html("<%= j render @task %>");

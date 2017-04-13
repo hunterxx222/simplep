@@ -31,14 +31,12 @@ class TasksController < ApplicationController
 
     if @task.save
       track_activity current_user, @project, @task
-
       @project.reload
       respond_to do |format|
         format.html { redirect_to @project }
-        format.json { render json: @project }
-
+        format.json #{ render json: @project }
         #NOTE: adding format.js shows an uneccessary modal
-        #format.js
+        format.js
       end
     else
       flash[:error] = "#{ @project.errors.full_messages.to_sentence }"
