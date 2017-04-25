@@ -140,9 +140,6 @@ class TasksController < ApplicationController
   def load_task
     @task = Task.find params[:id]
   end
-  def task_params
-    params.require(:task).permit(:task_id, :name, :description, :position)
-  end
 
   def load_project
     @project = Project.find params[:project_id]

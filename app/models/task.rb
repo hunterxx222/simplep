@@ -25,4 +25,9 @@ class Task < ApplicationRecord
     end
     @followers
   end
+
+  def task_params
+    params.require(:task).permit(:task_id, :name, :description, :position)
+  end
+
 end
