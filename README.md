@@ -1,5 +1,5 @@
 # Group Project - *SimpleP Project Management*
-
+### Update May 21,2017: SimpleP's development now go private
 ## Overview
 
 **SimpleP** is an intuitive Project Management written in Ruby on Rails designed to drastically improve project without the needs of sophisticated softwares.
